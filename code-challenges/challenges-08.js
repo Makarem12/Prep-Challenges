@@ -49,7 +49,7 @@
   };
   
   const resultArray = customerAndAge(customerData);
-  console.log(resultArray);
+  // console.log(resultArray);
   
 // -------------------------------------------------------------------------------------------------------
 
