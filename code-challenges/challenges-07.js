@@ -21,26 +21,18 @@
 //  2- The first letters of the firstName and lastName should be capital letter
 
 const objLat = (obj) => {
-
-    
     const { firstName, lastName, age, hobby } = obj;
-
-    
-    const formattedFirstName = capitalizeFirstLetter(firstName);
-    const formattedLastName = capitalizeFirstLetter(lastName);
-
-    
-    const formattedText = "my name is " + formattedFirstName + " " + formattedLastName + " I am " + age + " YO, and I love " + hobby.toLowerCase() + ".";
-
+    const formattedText = "my name is " + firstName.charAt(0).toUpperCase()+ firstName.slice(1)+ " " + lastName.charAt(0).toUpperCase()+ lastName.slice(1) + " I am " + age + " YO, and I love " + hobby + ".";
     return formattedText;
 };
 let obj = {
     firstName: 'Ellie',
     lastName: 'jon',
     age: 67,
-    hobby: 'Gaming and Sleeping'
+    hobby: 'Gaming and Sleeping.'
 };
-console.log(objLat(obj));
+
+
 
 
 
@@ -105,20 +97,25 @@ console.log(objLat(obj));
 //  1- Full name is first name + last name
 //  2- If one of the names is null don`t add it to the full name
 
-    
 
 
-    
+
+
 const cvFormatter = (arr) => {
-
 
     const reformattedCvs = [];
 
     for (let i = 0; i < arr.length; i++) {
         const applicant = arr[i];
+        let fullName;
+
+        if (applicant.lastName === null || applicant.lastName === undefined) {
+            fullName = applicant.firstName;
+        } else {
+            fullName = applicant.firstName + " " + applicant.lastName;
+        }
 
         if (applicant.yearsOfExperience > 1) {
-            const fullName = applicant.firstName+" "+applicant.lastName;
             const formattedApplicant = {
                 fullName,
                 tech: applicant.tech
@@ -127,6 +124,8 @@ const cvFormatter = (arr) => {
             reformattedCvs.push(formattedApplicant);
         }
     }
+
+    return reformattedCvs;
 };
 let cvs = [
     {
@@ -316,5 +315,5 @@ console.log(cvFormatter(cvs));
 //     // write your code here
 // };
 // // -------------------------------------------------------------------------------------------------------
-
+module.exports = { objLat, cvFormatter};
 // module.exports = { objLat, cvFormatter, applicationsStatics, classesAvg };
